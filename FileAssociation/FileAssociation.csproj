@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <!--[注释begin] 注释版本：1.6
 支持读取的属性：
 NetString             Directory.Build.props里设置的.NET的版本，一般是最新的，比如：net7.0。
@@ -57,7 +57,7 @@ SmartHelper_Debug     开启生成前后调用Smart.Helper.exe的Debug功能，�
 </Target>
   [注释end]-->
   <PropertyGroup>
-    <Version>22.12.16.21</Version>
+    <Version>22.12.16.22</Version>
     <TargetFrameworks>net48;net6.0</TargetFrameworks>
     <OutputType>Library</OutputType>
     <AssemblyName>FileAssociation2</AssemblyName>
