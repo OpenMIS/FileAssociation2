@@ -1,0 +1,76 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--[注释begin] 注释版本：1.6
+支持读取的属性：
+NetString             Directory.Build.props里设置的.NET的版本，一般是最新的，比如：net7.0。
+WindowsString         Directory.Build.props里设置的windows的版本，一般是最新的，比如：windows10.0.22621.0。
+NetWindowsString      最新版.NET在最新的Windows上运行的目标框架，比如：net7.0-windows10.0.22621.0。
+NetFrameworkString    Directory.Build.props里设置的.Net Framework版本，一般是最新的，比如：net481。
+IsNetFramework        当前正在生成的目标框架，是否.Net Framework。
+TargetFrameworks2     多目标框架，.NET目标框架在前面，比如：net7.0-windows10.0.22621.0;net481。
+                      TargetFrameworks默认的是.Net Framework目标框架在前面，为了界面设计器能使用.Net Framework目标框架里的。
+                      因为.NET目标框架的界面设计器慢，而且兼容性不好，.NET目标框架的DevExpress界面设计器经常会有问题，甚至导致Visual Studio崩溃退出。
+NetFrameworkVersion   Directory.Build.props里设置的.Net Framework版本，一般是最新的，比如：v4.8.1。
+
+IsSdkStyleProject     是否Sdk样式项目
+IsApp                 是否App开头的项目
+IsMaui                是否Maui开头的项目
+IsSmartFrameworkProject 是否Smart.Framework相关项目，以Smart.开头的项目都算。
+ConfigurationKey_ClientOrServer     Configuration里以Server字符串开头的，此值为Server，否则此值为Client。
+ConfigurationKey_ForClientOrServer  Configuration里以Server字符串开头的，此值为ForServer，否则此值为ForClient。
+PackageOutputBase     生成NuGet包输出的基目录，比如：C:\Git\BuildOutput\nupkg\
+PackageOutputPath     生成NuGet包输出的目录，比如：C:\Git\BuildOutput\nupkg\Framework 或者 C:\Git\BuildOutput\nupkg\Local
+OutDirBase_Dotnet     Dotnet项目的输出基目录，比如：C:\Git\BuildOutput\dotnet\
+OutDirBase_SmartFramework Smart.Framework相关项目的输出基目录，比如：C:\Git\BuildOutput\dotnet\Smart.Framework-Dev\Run\Files\System Run\
+OutDirBase_NonSmartFramework  非Smart.Framework相关项目的输出基目录，比如：C:\Git\BuildOutput\dotnet\AllInOne\Run\Files\System Run\
+Smart_Helper_DirBase  Smart.Helper.exe的基目录，比如：C:\Git\BuildOutput\dotnet\Smart.Framework-Dev\Run\Files\System Run\net481\
+Smart_Helper          Smart.Helper.exe的路径，比如：C:\Git\BuildOutput\dotnet\Smart.Framework-Dev\Run\Files\System Run\net481\Smart.Helper.exe
+Smart_Helper_Temp     Smart.Helper.Temp.exe的路径，比如：C:\Git\BuildOutput\dotnet\Smart.Framework-Dev\Run\Files\System Run\net481\Smart.Helper.Temp.exe
+Smart_Helper_ForRun   当前用于执行Smart.Helper.exe的路径，比如：$(Smart_Helper)或者$(Smart_Helper_Temp)的值。
+OutDirName            输出目录名，比如：.NET 或者 net481
+OutDir                实际输出的目录
+
+读取的属性使用：
+Is开头的字符串为true表示true，为非true的表示false。
+<PropertyGroup Condition="'$(IsSdkStyleProject)' != 'true'">
+...非SDK样式项目
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(IsNetFramework)' != 'true' And '$(IsSmartFrameworkProject)' == 'true'">
+...非 .Net Framework 项目 并且 Smart.Framework 相关项目
+</PropertyGroup>
+
+支持设置的属性：
+UseUnitTest           使用MSTest单元测试框架，Smart项目默认使用，其他项目默认不使用。
+UseDevExpressCore     使用DevExpress Core，支持跨平台，默认不使用。
+UseDevExpressWindows  使用DevExpress UI相关，仅支持Windows平台，默认不使用。
+SmartHelper_Debug     开启生成前后调用Smart.Helper.exe的Debug功能，方便调试Smart.Helper.exe，默认不启用。
+
+设置的属性使用：
+<UseUnitTest>true</UseUnitTest>
+<UseDevExpressCore>true</UseDevExpressCore>
+<UseDevExpressWindows>true</UseDevExpressWindows>
+<SmartHelper_Debug>true</SmartHelper_Debug>
+
+<Target Name="Message_Debug" BeforeTargets="BeforeBuild" 
+  Label="下面输出信息，用于调试 项目文件。">
+  <Message Text="1111 $(MSBuildExtensionsPath)   $(MSBuildToolsVersion)" Importance="high" />
+</Target>
+  [注释end]-->
+  <PropertyGroup>
+    <Version>22.12.16.21</Version>
+    <TargetFrameworks>net48;net6.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <AssemblyName>FileAssociation2</AssemblyName>
+    <RootNamespace>BrendanGrant.Helpers.FileAssociation</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <FileVersion>$(Version)</FileVersion>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <UseWindowsForms>false</UseWindowsForms>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>Clone From FileAssociation.Rebuild support net6.0 and net48.</Description>
+    <Copyright>MIT</Copyright>
+    <RepositoryUrl>https://github.com/OpenMIS/FileAssociation</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+</Project>

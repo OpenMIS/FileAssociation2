@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Version>22.12.16.21</Version>
+    <TargetFramework>net48;net6.0-windows10.0.22621.0</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <FileVersion>$(Version)</FileVersion>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+</Project>
